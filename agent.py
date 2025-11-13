@@ -2,7 +2,8 @@ from typing import List, Dict
 import os
 import google.generativeai as genai
 from sqlalchemy.future import select
-from db import SessionLocal
+from database import SessionLocal
+
 from models import Message
 
 SYSTEM_PROMPT = """You are a helpful, concise AI agent. 
