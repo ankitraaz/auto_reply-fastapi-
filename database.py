@@ -1,8 +1,9 @@
-# database.py
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import os
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "postgresql://raaz:password@localhost/fastapidb"
+DATABASE_URL = os.getenv("POSTGRES_URI")
 
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(bind=engine)
+engine = create_async_engine(DATABASE_URL, echo=True)
+SessionLocal = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+Base = declarative_base()

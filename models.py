@@ -1,11 +1,10 @@
-# models.py
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Text
+from db import Base
 
-Base = declarative_base()
+class Message(Base):
+    __tablename__ = "messages"
 
-class Note(Base):
-    __tablename__ = "notes"
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String)
-    content = Column(String)
+    thread_id = Column(String, index=True)
+    role = Column(String)   # "user" or "assistant"
+    content = Column(Text)

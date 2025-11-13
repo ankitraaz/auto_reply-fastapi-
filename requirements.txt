@@ -2,3 +2,9 @@ fastapi
 uvicorn
 httpx
 python-dotenv
+google-generativeai
+asyncpg
+sqlalchemy
+twilio
+httpx
+
